@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='dist/css/output.css')}}"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Knewave&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <title>Dinder</title>
+  </head>
+  <body class="font-knewave">
+    {% set button_classes = "relative z-20 bg-gradient-to-r from-pink-500
+    via-yellow-500 to-red-500 text-white py-2 px-4 rounded hover:opacity-80
+    transition duration-300" %} {% from "_macros.html" import heading %}
+    <div
+      class="bg-gradient-to-br from-pink-500 from-10% via-sky-500 via-30% to-yellow-500 to-90% h-screen overflow-x-hidden"
+    >
+      {% include '_navbar.html' %} {% include '_floating_dinos.html' %} {%block
+      content %}
+      <div class="flex justify-center content-center m-5 relative z-10">
+        {{heading("Welcome to the dinosaur website :)")}}
+      </div>
+      <div class="flex justify-center relative z-10">
+        <img
+          class="w-auto"
+          src="./static/img/boxer.gif"
+          alt="Dinosaur fighting"
+        />
+        <img
+          class="w-auto scale-x-[-1]"
+          src="./static/img/boxer.gif"
+          alt="Dinosaur fighting"
+        />
+      </div>
+      <div class="flex flex-col items-center">
+        {% include '_types_hist.html' %}
+        <a href="{{url_for('download')}}" class="{{button_classes}}"
+          >Download data</a
+        >
+      </div>
+
+      {% endblock %}
+    </div>
+    <script>
+      function toggleDropdown(headerElement) {
+        const parentDiv = headerElement.closest("div");
+        const contentDiv = parentDiv.querySelector("div.dropdown-content-div");
+        const isOpen = parentDiv.getAttribute("data-open") === "true";
+
+        if (isOpen) {
+          contentDiv.classList.add("hidden");
+          parentDiv.setAttribute("data-open", "false");
+        } else {
+          contentDiv.classList.remove("hidden");
+          parentDiv.setAttribute("data-open", "true");
+        }
+      }
+    </script>
+  </body>
+</html>

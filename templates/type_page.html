@@ -1,0 +1,46 @@
+{% extends "base.html" %} {% from "_macros.html" import heading %} {% block
+content %}
+
+<!-- Tituls -->
+<div class="flex flex-col items-center content-center relative m-5 z-10">
+  {{heading(type.capitalize())}} {% if diet %}
+  <p
+    class="content-center bg-gradient-to-br from-white from-40% to-pink-500 text-transparent bg-clip-text"
+  >
+    {{diet.capitalize()}}
+  </p>
+  {% endif %}
+</div>
+
+<!-- Sektoru diagramma un lejupielādes poga -->
+<div class="flex flex-col items-center relative z-10">
+  {% if request.path == url_for('type_page', type=type)|unquote %} {% include
+  '_diet_pie.html' %}
+  <a href="{{url_for('download', type=type)}}" class="{{button_classes}}"
+    >Download data</a
+  >
+  {% endif %} {% if request.path == url_for('type_diet_page', type=type,
+  diet=diet)|unquote %}
+  <a
+    href="{{url_for('download', type=type, diet=diet)}}"
+    class="{{button_classes}}"
+    >Download data</a
+  >
+  {% endif %}
+</div>
+
+<!-- Alfabēta grupa ar dinozauriem iekšā -->
+{% for group in alphabetical_groups %}
+<div class="m-5 z-10 relative">
+  <h3 class="text-xl text-white cursor-pointer" onclick="toggleDropdown(this)">
+    {{ group.first_letter }} ▼
+  </h3>
+  <div class="pl-5 hidden dropdown-content-div">
+    {% for dinosaur, link in zip(group.dinosaur_names, group.dinosaur_links) %}
+    <a class="text-white hover:text-gray-500 block" href="{{ link }}">
+      {{ dinosaur.capitalize() }}
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endfor %} {% endblock %}

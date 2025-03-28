@@ -1,0 +1,60 @@
+<nav
+  class="flex items-center justify-between p-6 flex-wrap bg-gray-500 relative z-30"
+>
+  <div class="flex items-center flex-shrink-0 text-white mr-6">
+    <a href="/" class="text-xl tracking-tight">The Dinosaur</a>
+  </div>
+  <div class="z-30 relative flex gap-5">
+    <a
+      href="{{url_for('create_dinosaur')}}"
+      class="text-xl text-white cursor-pointer hover:text-gray-300 select-none transition duration-200"
+      >Add dinosaur</a
+    >
+    <h3
+      class="text-xl text-white cursor-pointer hover:text-gray-300 select-none transition duration-200"
+      onclick="toggleDropdown(this)"
+    >
+      Types ▼
+    </h3>
+    <div
+      class="bg-gray-500 border-y border-x-2 absolute hidden dropdown-content-div rounded-md top-12 right-0"
+    >
+      <a
+        class="text-white hover:bg-gray-400 block py-3 px-5 border-y border-white transition duration-300"
+        href="/armoured dinosaur"
+      >
+        Armoured Dinosaur
+      </a>
+      <a
+        class="text-white hover:bg-gray-400 block py-3 px-5 border-y border-white transition duration-300"
+        href="/ceratopsian"
+      >
+        Ceratopsian
+      </a>
+      <a
+        class="text-white hover:bg-gray-400 block py-3 px-5 border-y border-white transition duration-300"
+        href="/euornithopod"
+      >
+        Euornithopod
+      </a>
+      <a
+        class="text-white hover:bg-gray-400 block py-3 px-5 border-y border-white"
+        href="/large theropod"
+      >
+        Large Theropod
+      </a>
+      <a
+        class="text-white hover:bg-gray-400 block py-3 px-5 border-y border-white transition duration-300"
+        href="/sauropod"
+      >
+        Sauropod
+      </a>
+      <a
+        class="text-white hover:bg-gray-400 block py-3 px-5 border-y border-white transition duration-300"
+        href="/small theropod"
+      >
+        Small Theropod
+      </a>
+    </div>
+  </div>
+</nav>
