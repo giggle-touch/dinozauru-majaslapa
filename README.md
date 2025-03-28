@@ -3,5 +3,5 @@
 poetry install
 ```
 ```bash
-poetry run flask run
+poetry run python app.py
 ```
